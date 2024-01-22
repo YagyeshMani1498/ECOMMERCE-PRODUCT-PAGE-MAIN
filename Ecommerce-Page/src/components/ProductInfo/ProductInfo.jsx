@@ -3,8 +3,6 @@ import { useRecoilState, RecoilRoot, useRecoilValue } from "recoil";
 import { quantityAtom } from "../../atoms";
 
 export function ProductInfo() {
-  const value = useRecoilValue(quantityAtom);
-  console.log(value);
   return (
     <>
       <div className="info-container">
@@ -29,7 +27,7 @@ export function ProductInfo() {
 
         <div className="add-to-cart-quantity-selector">
           <QuantitySelector />
-          <button className="add-to-cart">{value}Add to cart</button>
+          <button className="add-to-cart">Add to cart</button>
         </div>
       </div>
     </>
