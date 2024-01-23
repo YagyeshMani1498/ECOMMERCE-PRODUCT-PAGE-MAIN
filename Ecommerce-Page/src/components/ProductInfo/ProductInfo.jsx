@@ -1,6 +1,20 @@
 import { useState } from "react";
-import { useRecoilState, RecoilRoot, useRecoilValue } from "recoil";
-import { quantityAtom } from "../../atoms";
+import {
+  useRecoilState,
+  RecoilRoot,
+  useSetRecoilState,
+  useRecoilValue,
+} from "recoil";
+import { cartQuantity, cartState, quantityAtom } from "../../atoms";
+import { Items } from "../cart/Items";
+import { CartNotification } from "../cart/CartContainer";
+
+const productInfo = {
+  title: "sneaker company",
+  heading: "Fall Limited Edition Sneakers",
+  info: "These low-profile seneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer.",
+  price: 125,
+};
 
 export function ProductInfo() {
   return (
@@ -19,7 +33,7 @@ export function ProductInfo() {
 
         <div className="price-box">
           <div className="price-off">
-            <p className="price">$125.00</p>
+            <p className="price">{`$${125}.00`}</p>
             <p className="off">50%</p>
           </div>
           <p className="previous-price">$250.00</p>
@@ -27,7 +41,7 @@ export function ProductInfo() {
 
         <div className="add-to-cart-quantity-selector">
           <QuantitySelector />
-          <button className="add-to-cart">Add to cart</button>
+          <AddToCart />
         </div>
       </div>
     </>
@@ -57,6 +71,25 @@ function QuantitySelector() {
           +
         </button>
       </div>
+    </>
+  );
+}
+
+function AddToCart() {
+  const [quantity, setQuantity] = useRecoilState(quantityAtom);
+  const setCart = useSetRecoilState(cartState);
+  const cartQuantityNotification = useSetRecoilState(cartQuantity);
+  function addItems() {
+    if (quantity <= 0) return;
+    setCart(<Items quantity={quantity} price={productInfo.price} />);
+    setQuantity(0);
+    cartQuantityNotification(quantity);
+  }
+  return (
+    <>
+      <button className="add-to-cart" onClick={addItems}>
+        Add to cart
+      </button>
     </>
   );
 }

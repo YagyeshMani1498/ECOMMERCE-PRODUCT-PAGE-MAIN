@@ -9,13 +9,13 @@ import { RecoilRoot } from "recoil";
 function App() {
   return (
     <>
-      <TopBar />
-      <ProductInformationWrapper>
-        <ImageComponent />
-        <RecoilRoot>
+      <RecoilRoot>
+        <TopBar />
+        <ProductInformationWrapper>
+          <ImageComponent />
           <ProductInfo />
-        </RecoilRoot>
-      </ProductInformationWrapper>
+        </ProductInformationWrapper>
+      </RecoilRoot>
     </>
   );
 }

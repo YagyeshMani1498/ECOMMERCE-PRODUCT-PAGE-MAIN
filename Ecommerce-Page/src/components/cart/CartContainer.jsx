@@ -1,28 +1,49 @@
 import { useState } from "react";
-import cart from "../../assets/images/icon-cart.svg";
+import cartImg from "../../assets/images/icon-cart.svg";
 
 import { Items } from "./Items";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { cartOpenClose, cartQuantity, cartState } from "../../atoms";
 
 export function CartContainer() {
-  const [open, setOpen] = useState(false);
-
-  const [cartState, SetCartSTate] = useState(<Items />);
+  const [open, setOpen] = useRecoilState(cartOpenClose);
+  const cart = useRecoilValue(cartState);
 
   return (
     <>
       <div className={`cart-container ${open ? "cart-container-open" : ""}`}>
         <div className="cart-text">Cart</div>
         <hr />
-        <div className="items">{cartState}</div>
+        <div className="items">{cart}</div>
       </div>
-      <img
-        src={cart}
-        alt="cart"
-        className="img-cart"
-        onClick={() => {
-          setOpen(!open);
+      <div
+        style={{
+          position: "relative",
         }}
-      />
+      >
+        <CartNotification />
+        <img
+          src={cartImg}
+          alt="cart"
+          className="img-cart"
+          onClick={() => {
+            setOpen(!open);
+          }}
+        />
+      </div>
     </>
+  );
+}
+
+export function CartNotification() {
+  const quantity = useRecoilValue(cartQuantity);
+  return (
+    <div
+      className={`quantity-notification ${
+        quantity === 0 ? "quantity-display" : null
+      }`}
+    >
+      {quantity}
+    </div>
   );
 }

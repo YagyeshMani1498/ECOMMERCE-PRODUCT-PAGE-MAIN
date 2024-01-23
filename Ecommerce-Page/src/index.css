@@ -96,6 +96,7 @@ body {
   max-width: 55rem;
   margin: auto;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1rem 0.5rem 1rem;
@@ -179,7 +180,7 @@ body {
 }
 
 .background {
-  width: 100vw;
+  min-width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
   position: absolute;
@@ -194,7 +195,7 @@ body {
 
 /* TO MAKE NAVIGATION RESPONSIVE */
 
-@media (min-width: 40rem) {
+@media (min-width: 41.2rem) {
   body {
     padding: 0 1rem;
   }
@@ -279,12 +280,12 @@ body {
 .next {
   position: absolute;
   top: 50%;
-  transform: translate(10%, -50%);
+  transform: translate(30%, -50%);
 }
 
 .next {
   right: 0;
-  transform: translate(-10%, -50%);
+  transform: translate(-30%, -50%);
 }
 
 .previous:hover img,
@@ -450,10 +451,10 @@ body {
   box-shadow: 0px 10px 15px 10px var(--Pale-orange);
 }
 
-@media (min-width: 40rem) {
+@media (min-width: 41.2rem) {
   .product-info-section {
     flex-direction: row;
-    gap: 4rem;
+    gap: 2rem;
     align-items: center;
     justify-content: center;
     margin-bottom: 3rem;
@@ -479,9 +480,18 @@ body {
     width: 60%;
     margin-bottom: 0;
   }
+
+  .previous,
+  .next {
+    display: none;
+  }
+
+  .image-container {
+    cursor: pointer;
+  }
 }
 
-@media (min-width: 40rem) {
+@media (min-width: 40.5rem) {
   .product-info-section {
     gap: 2rem;
   }
@@ -491,8 +501,7 @@ body {
 .cart-container {
   border-radius: 0.3rem;
   position: absolute;
-  max-width: 18.5rem;
-
+  width: 18.5rem;
   height: 0;
   top: 100%;
   right: -2%;
@@ -502,7 +511,7 @@ body {
   z-index: 999;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s;
+  transition: all 0.5s;
 }
 
 .cart-container-open {
@@ -520,6 +529,10 @@ body {
 
 .items {
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 9.5rem;
 }
 
 .no-item {
@@ -578,4 +591,25 @@ body {
 
 strong {
   color: var(--Very-dark-blue);
+}
+
+.quantity-notification {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.7375rem;
+  font-size: 0.8rem;
+  color: var(--White);
+  font-weight: var(--fw-bold);
+  padding: 1px 8px;
+  border-radius: 10px;
+  line-height: 1;
+  background-color: var(--Orange);
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.2s;
+}
+
+.quantity-display {
+  opacity: 0;
+  visibility: hidden;
 }
