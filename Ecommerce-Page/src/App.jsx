@@ -5,6 +5,7 @@ import { ImageComponent } from "./components/ImageCompoenet/ImageComponent";
 import { ProductInformationWrapper } from "./components/ProductInfo/ProductInfoWrapper";
 import { ProductInfo } from "./components/ProductInfo/ProductInfo";
 import { RecoilRoot } from "recoil";
+import { ImageSliderComponent } from "./components/ImageCompoenet/ImageSliderComponent";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <TopBar />
         <ProductInformationWrapper>
           <ImageComponent />
+          <ImageSliderComponent />
           <ProductInfo />
         </ProductInformationWrapper>
       </RecoilRoot>
