@@ -88,6 +88,11 @@ h6 {
 body {
   font-family: var(--ff);
   display: grid;
+  position: relative;
+}
+
+main {
+  margin: 0 0.5rem;
 }
 
 /* HEADER */
@@ -180,8 +185,8 @@ body {
 }
 
 .background {
-  min-width: 100vw;
-  height: 100vh;
+  min-width: 100%;
+  min-height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   position: absolute;
   top: 0;
@@ -505,7 +510,7 @@ body {
   width: 18.5rem;
   height: 0;
   top: 100%;
-  right: -2%;
+  right: 0%;
   background-color: var(--White);
   box-shadow: 0px 2px 6px 1px rgb(216, 216, 216);
   overflow: hidden;
@@ -653,8 +658,8 @@ strong {
   position: absolute;
   top: 0;
   left: 0;
-  min-width: 100vw;
-  min-height: 100vh;
+  min-width: 100%;
+  min-height: 100%;
   background-color: rgba(0, 0, 0, 0.75);
   z-index: 99;
   display: none;
